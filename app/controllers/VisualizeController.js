@@ -10,7 +10,7 @@ app.controller('VisualizeController', ['$scope', function ($scope) {
     $scope.data = window.data.reported;
     $scope.width = 600;
     $scope.height = 350;
-    $scope.yAxis = 'C02';
+    $scope.yAxis = 'Number';
     $scope.xAxis = 'Time';
     $scope.amax = 0;
     $scope.bmax = 0;
