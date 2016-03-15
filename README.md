@@ -1,2 +1,2 @@
-# IoTVisualization
-Visualization Project for my Internet of Things Class
+# Data Processing
+Visualization Project for practice with data processing
