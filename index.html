@@ -11,6 +11,7 @@
         'https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-route.min.js',
         'app/app.modules.js',
         'app/controllers/VisualizeController.js',
+        'app/services/VisualizeService.js',
         'app/directives/VisualizeDirective.js',
         'assets/js/data.js'
     ].forEach(function(src) {
@@ -46,18 +47,24 @@
                     <div class="y" style="width: {{ height }}px;">{{ yAxis }}</div>
                     <div class="x">{{ xAxis }}</div>
                     <svg style="width:{{width}}px; height:{{height}}px;">
-                        <line ng-repeat="line in data track by $index"
-                              ng-xa="{{ $index / data.length * width }}"
-                              ng-ya="{{ data[$index - 1].a / amax * height }}"
-                              ng-xb="{{ ($index + 1) / data.length * width }}"
-                              ng-yb="{{ line.a / amax * height }}"
+                        <line ng-xa="0"
+                              ng-ya="{{ expected / max * height }}"
+                              ng-xb="{{ width }}"
+                              ng-yb="{{ expected / max * height }}"
                               style="stroke: red">
                         </line>
                         <line ng-repeat="line in data track by $index"
                               ng-xa="{{ $index / data.length * width }}"
-                              ng-ya="{{ data[$index - 1].b / bmax * height }}"
+                              ng-ya="{{ data[$index - 1].a / max * height }}"
                               ng-xb="{{ ($index + 1) / data.length * width }}"
-                              ng-yb="{{ line.b / bmax * height }}"
+                              ng-yb="{{ line.a / max * height }}"
+                              style="stroke: orange">
+                        </line>
+                        <line ng-repeat="line in data track by $index"
+                              ng-xa="{{ $index / data.length * width }}"
+                              ng-ya="{{ data[$index - 1].b / max * height }}"
+                              ng-xb="{{ ($index + 1) / data.length * width }}"
+                              ng-yb="{{ line.b / max * height }}"
                               style="stroke: blue">
                         </line>
                     </svg>
@@ -65,14 +72,16 @@
                 <!--<table class="table table-striped table-hover">
                     <thead>
                         <tr>
-                            <th>Week</th>
-                            <th>Data</th>
+                            <th text-align="center">Week</th>
+                            <th text-align="center">Point A</th>
+                            <th text-align="center">Point B</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr ng-repeat="m in data track by $index">
                             <td>{{ $index + 1 }}</td>
-                            <td>{{ m }}</td>
+                            <td>{{ m.a }}</td>
+                            <td>{{ m.b }}</td>
                         </tr>
                     </tbody>
                 </table>-->
