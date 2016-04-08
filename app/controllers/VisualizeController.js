@@ -9,15 +9,15 @@ app.controller('VisualizeController', ['$scope', 'VisualizeService', function ($
     $scope.xAxis = 'Time';
     
     function init() {
-        $scope.data = $VS.data;
         $scope.max = $VS.max;
+        $scope.data = $VS.data;
         $scope.aExpected = $VS.aExpected;
         $scope.bExpected = $VS.bExpected;
     }
     init();
     
     $scope.swapData = function () {
-        if ($scope.data === $VS.data) {
+        if ($scope.data !== $VS.nData) {
             $scope.max = $VS.nMax;
             $scope.data = $VS.nData;
             $scope.aExpected = $scope.bExpected = $VS.expected;
