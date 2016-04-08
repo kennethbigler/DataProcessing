@@ -39,6 +39,7 @@
         <div class="row">
             <nav class="navbar navbar-inverse">
                 <a class="navbar-brand">Data Visualization</a>
+                <button ng-click="swapData()" class="btn pull-right navbar-btn">Swap Data</button>
             </nav>
             <div class="col-sm-12">
                 <!--svg line chart-->
@@ -48,9 +49,15 @@
                     <div class="x">{{ xAxis }}</div>
                     <svg style="width:{{width}}px; height:{{height}}px;">
                         <line ng-xa="0"
-                              ng-ya="{{ expected / max * height }}"
+                              ng-ya="{{ aExpected / max * height }}"
                               ng-xb="{{ width }}"
-                              ng-yb="{{ expected / max * height }}"
+                              ng-yb="{{ aExpected / max * height }}"
+                              style="stroke: red">
+                        </line>
+                        <line ng-xa="0"
+                              ng-ya="{{ bExpected / max * height }}"
+                              ng-xb="{{ width }}"
+                              ng-yb="{{ bExpected / max * height }}"
                               style="stroke: red">
                         </line>
                         <line ng-repeat="line in data track by $index"
