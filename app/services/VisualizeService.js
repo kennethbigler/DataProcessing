@@ -4,10 +4,18 @@ app.factory('VisualizeService', [function () {
     var factory = {},
         data = [],
         nData = [],
+        aData = [],
+        bData = [],
         i = 0,
         aSum = 0,
         bSum = 0,
-        max = 0;
+        max = 0,
+        aMax = 0,
+        bMax = 0;
+    
+    // variables
+    factory.aGoal = 1200;
+    factory.bGoal = 800;
     
     // get data from the window
     data = window.data;
@@ -15,17 +23,30 @@ app.factory('VisualizeService', [function () {
     
     // find max to fit results into the graph
     for (i = 0; i < data.length; i += 1) {
-        if (data[i].a > max) {
-            max = data[i].a;
+        aData[i] = {a: data[i].a, b: 0};
+        bData[i] = {a: 0, b: data[i].b};
+        if (data[i].a > aMax) {
+            aMax = data[i].a;
         }
-        if (data[i].b > max) {
-            max = data[i].b;
-        }
-        if (factory.expected > max) {
-            max = factory.expected;
+        if (data[i].b > bMax) {
+            bMax = data[i].b;
         }
     }
+    max = (aMax < bMax) ? bMax : aMax;
+    if (factory.expected > max) {
+        max = factory.expected;
+    }
+    if (factory.aGoal > aMax) {
+        aMax = factory.aGoal + 5;
+    }
+    if (factory.bGoal > bMax) {
+        bMax = factory.bGoal + 5;
+    }
     factory.max = max;
+    factory.aMax = aMax;
+    factory.bMax = bMax;
+    factory.aData = aData;
+    factory.bData = bData;
     
     // find the sums
     for (i = 0; i < data.length; i += 1) {

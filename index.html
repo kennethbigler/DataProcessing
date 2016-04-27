@@ -26,20 +26,20 @@
 <!---------------------------------------------------------------------------------------------------->
 <body ng-app="myApp" ng-controller="VisualizeController">
     <div></div>
-    <!-- Bootstrap CSS -->
+    <!-- Stylesheets -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" type='text/css' media="all">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" type="text/css" media="all">
-    <!-- Google Font -->
     <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Open+Sans' type='text/css' media="all">
-    <!-- Custom Styles -->
     <link rel="stylesheet" href="assets/css/mystyles.css" type='text/css' media="all">
     
-    <!-- Start Body for Real -->
+    <!-- Content -->
     <div class="container-fluid">
         <div class="row">
             <nav class="navbar navbar-inverse">
                 <a class="navbar-brand">Data Visualization</a>
                 <button ng-click="swapData()" class="btn pull-right navbar-btn">Swap Data</button>
+                <button ng-click="showA()" class="btn pull-right navbar-btn">Show A</button>
+                <button ng-click="showB()" class="btn pull-right navbar-btn">Show B</button>
             </nav>
             <div class="col-sm-12">
                 <!--svg line chart-->
@@ -52,13 +52,13 @@
                               ng-ya="{{ aExpected / max * height }}"
                               ng-xb="{{ width }}"
                               ng-yb="{{ aExpected / max * height }}"
-                              style="stroke: red">
+                              style="stroke: orange">
                         </line>
                         <line ng-xa="0"
                               ng-ya="{{ bExpected / max * height }}"
                               ng-xb="{{ width }}"
                               ng-yb="{{ bExpected / max * height }}"
-                              style="stroke: red">
+                              style="stroke: blue">
                         </line>
                         <line ng-repeat="line in data track by $index"
                               ng-xa="{{ $index / data.length * width }}"

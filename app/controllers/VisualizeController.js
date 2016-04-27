@@ -20,9 +20,24 @@ app.controller('VisualizeController', ['$scope', 'VisualizeService', function ($
         if ($scope.data !== $VS.nData) {
             $scope.max = $VS.nMax;
             $scope.data = $VS.nData;
-            $scope.aExpected = $scope.bExpected = $VS.expected;
+            $scope.aExpected = $scope.bExpected = $scope.aGoal = $scope.bGoal = $VS.expected;
         } else {
             init();
         }
+    };
+    
+    $scope.showA = function () {
+        $scope.max = $VS.aMax;
+        $scope.data = $VS.aData;
+        $scope.aExpected = $VS.aExpected;
+        $scope.bExpected = $VS.aGoal;
+    };
+    
+    $scope.showB = function () {
+        $scope.max = $VS.bMax;
+        $scope.data = $VS.bData;
+        $scope.bExpected = $VS.bExpected;
+        $scope.aExpected = $VS.bGoal;
+        console.log($scope.aExpected);
     };
 }]);
