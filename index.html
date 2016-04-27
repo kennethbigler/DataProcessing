@@ -37,9 +37,6 @@
         <div class="row">
             <nav class="navbar navbar-inverse">
                 <a class="navbar-brand">Data Visualization</a>
-                <button ng-click="swapData()" class="btn pull-right navbar-btn">Swap Data</button>
-                <button ng-click="showA()" class="btn pull-right navbar-btn">Show A</button>
-                <button ng-click="showB()" class="btn pull-right navbar-btn">Show B</button>
             </nav>
             <div class="col-sm-12">
                 <!--svg line chart-->
@@ -75,6 +72,11 @@
                               style="stroke: blue">
                         </line>
                     </svg>
+                </div>
+                <div class="btn-group" role="group">
+                    <button type="button" ng-click="swapData()" class="btn btn-primary">Swap Data</button>
+                    <button type="button" ng-click="showA()" class="btn btn-primary">Show A</button>
+                    <button type="button" ng-click="showB()" class="btn btn-primary">Show B</button>
                 </div>
                 <!--<table class="table table-striped table-hover">
                     <thead>

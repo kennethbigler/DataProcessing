@@ -38,6 +38,5 @@ app.controller('VisualizeController', ['$scope', 'VisualizeService', function ($
         $scope.data = $VS.bData;
         $scope.bExpected = $VS.bExpected;
         $scope.aExpected = $VS.bGoal;
-        console.log($scope.aExpected);
     };
 }]);
