@@ -1,10 +1,10 @@
 /*global $, console, app, $scope, AWS*/
 
-app.controller('VisualizeController', ['$scope', 'VisualizeService', function ($scope, $VS) {
+app.controller('VisualizeController', ['$scope', 'VisualizeService', '$window', function ($scope, $VS, $window) {
     "use strict";
     // graph vars
-    $scope.width = 600;
-    $scope.height = 350;
+    $scope.width = $window.innerWidth - 50;
+    $scope.height = $scope.width / 2;
     $scope.yAxis = 'Number';
     $scope.xAxis = 'Time';
     
