@@ -1,5 +1,5 @@
-/*global app, console*/
-app.factory('VisualizeService', [function () {
+/*global app*/
+app.factory('VisualizeService', ['$window', function ($window) {
     "use strict";
     var factory = {},
         data = [],
@@ -11,14 +11,25 @@ app.factory('VisualizeService', [function () {
         bSum = 0,
         max = 0,
         aMax = 0,
-        bMax = 0;
+        bMax = 0,
+        gpa = 0;
     
     // variables
     factory.aGoal = 1200;
     factory.bGoal = 800;
     
+    // get grade data from window
+    data = $window.grades;
+    factory.grades = data;
+    factory.gMax = 4.01;
+    for (i = 0; i < data.length; i += 1) {
+        gpa += data[i].a;
+    }
+    gpa /= data.length;
+    factory.gpa = gpa;
+    
     // get data from the window
-    data = window.data;
+    data = $window.data;
     factory.data = data;
     
     // find max to fit results into the graph

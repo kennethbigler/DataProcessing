@@ -1,10 +1,10 @@
-/*global $, console, app, $scope, AWS*/
+/*global app, $scope*/
 
 app.controller('VisualizeController', ['$scope', 'VisualizeService', '$window', function ($scope, $VS, $window) {
     "use strict";
     // graph vars
-    $scope.width = $window.innerWidth - 50;
-    $scope.height = $scope.width / 2;
+    $scope.width = $window.innerWidth - 60;
+    $scope.height = $scope.width / 2.5;
     $scope.yAxis = 'Number';
     $scope.xAxis = 'Time';
     
@@ -38,5 +38,12 @@ app.controller('VisualizeController', ['$scope', 'VisualizeService', '$window', 
         $scope.data = $VS.bData;
         $scope.bExpected = $VS.bExpected;
         $scope.aExpected = $VS.bGoal;
+    };
+    
+    $scope.showGrades = function () {
+        $scope.max = $VS.gMax;
+        $scope.data = $VS.grades;
+        $scope.aExpected = $VS.gpa;
+        $scope.bExpected = 0;
     };
 }]);
