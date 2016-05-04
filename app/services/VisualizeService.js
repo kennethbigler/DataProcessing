@@ -20,13 +20,14 @@ app.factory('VisualizeService', ['$window', function ($window) {
     
     // get grade data from window
     data = $window.grades;
-    factory.grades = data;
-    factory.gMax = 4.01;
     for (i = 0; i < data.length; i += 1) {
         gpa += data[i].a;
+        data[i].b = 0;
     }
     gpa /= data.length;
     factory.gpa = gpa;
+    factory.gMax = 4.01;
+    factory.grades = data;
     
     // get data from the window
     data = $window.data;
