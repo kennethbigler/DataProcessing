@@ -9,18 +9,18 @@ app.controller('VisualizeController', ['$scope', 'VisualizeService', '$window', 
     $scope.xAxis = 'Time';
     
     function init() {
-        $scope.max = $VS.max;
-        $scope.data = $VS.data;
-        $scope.aExpected = $VS.aExpected;
-        $scope.bExpected = $VS.bExpected;
+        $scope.max = $VS.nMax;
+        $scope.data = $VS.nData;
+        $scope.aExpected = $scope.bExpected = $scope.aGoal = $scope.bGoal = $VS.expected;
     }
     init();
     
     $scope.swapData = function () {
-        if ($scope.data !== $VS.nData) {
-            $scope.max = $VS.nMax;
-            $scope.data = $VS.nData;
-            $scope.aExpected = $scope.bExpected = $scope.aGoal = $scope.bGoal = $VS.expected;
+        if ($scope.data === $VS.nData) {
+            $scope.max = $VS.max;
+            $scope.data = $VS.data;
+            $scope.aExpected = $VS.aExpected;
+            $scope.bExpected = $VS.bExpected;
         } else {
             init();
         }
