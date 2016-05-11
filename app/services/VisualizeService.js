@@ -14,10 +14,6 @@ app.factory('VisualizeService', ['$window', function ($window) {
         bMax = 0,
         gpa = 0;
     
-    // variables
-    factory.aGoal = 1200;
-    factory.bGoal = 800;
-    
     // get grade data from window
     data = $window.grades;
     for (i = 0; i < data.length; i += 1) {
@@ -25,12 +21,14 @@ app.factory('VisualizeService', ['$window', function ($window) {
         data[i].b = 0;
     }
     gpa /= data.length;
+    data[-1] = data[0];
     factory.gpa = gpa;
     factory.gMax = 4.01;
     factory.grades = data;
     
     // get data from the window
     data = $window.data;
+    data[-1] = data[0];
     factory.data = data;
     
     // find max to fit results into the graph
@@ -57,6 +55,10 @@ app.factory('VisualizeService', ['$window', function ($window) {
     factory.max = max;
     factory.aMax = aMax;
     factory.bMax = bMax;
+    factory.aGoal = 1200;
+    factory.bGoal = 800;
+    aData[-1] = aData[0];
+    bData[-1] = bData[0];
     factory.aData = aData;
     factory.bData = bData;
     
@@ -75,6 +77,7 @@ app.factory('VisualizeService', ['$window', function ($window) {
     for (i = 0; i < data.length; i += 1) {
         nData.push({a: (data[i].a / aSum), b: (data[i].b / bSum)});
     }
+    nData[-1] = nData[0];
     // assign to return value
     factory.nData = nData;
     
