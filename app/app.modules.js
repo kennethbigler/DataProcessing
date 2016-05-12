@@ -1,3 +1,3 @@
-/*global angular, window, console*/
+/*global angular*/
 
 var app = angular.module('myApp', []);

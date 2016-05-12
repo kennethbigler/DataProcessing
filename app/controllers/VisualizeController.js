@@ -1,4 +1,4 @@
-/*global app, $scope*/
+/*global app*/
 
 app.controller('VisualizeController', ['$scope', 'VisualizeService', '$window', function ($scope, $VS, $window) {
     "use strict";
