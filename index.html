@@ -1,105 +1,104 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="assets/js/include.js"></script>
-    <title>Visualization</title>
-</head>
-<!---------------------------------------------------------------------------------------------------->
-<body ng-app="myApp" ng-controller="VisualizeController">
-    <div></div>
-    <!-- Stylesheets -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" type='text/css' media="all">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" type="text/css" media="all">
-    <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Open+Sans' type='text/css' media="all">
-    <link rel="stylesheet" href="assets/css/mystyles.css" type='text/css' media="all">
-    
-    <!-- Content -->
-    <div class="container-fluid">
-        <div class="row">
-            <nav class="navbar navbar-inverse">
-                <a class="navbar-brand">Data Visualization</a>
-            </nav>
-            <div class="col-sm-12">
-                <!--svg line chart-->
-                <h2>Data Visualization</h2>
-                <div class="chart" style="width: {{ width }}px; height: {{ height }}px;">
-                    <div class="y" style="width: {{ height }}px;">{{ yAxis }}</div>
-                    <div class="x">{{ xAxis }}</div>
-                    <svg style="width:{{width}}px; height:{{height}}px;">
-                        <line ng-xa="0"
-                              ng-ya="{{ aExpected / max * height }}"
-                              ng-xb="{{ width }}"
-                              ng-yb="{{ aExpected / max * height }}"
-                              style="stroke: blue">
-                        </line>
-                        <line ng-xa="0"
-                              ng-ya="{{ bExpected / max * height }}"
-                              ng-xb="{{ width }}"
-                              ng-yb="{{ bExpected / max * height }}"
-                              style="stroke: orange">
-                        </line>
-                        <line ng-repeat="line in data track by $index"
-                              ng-xa="{{ $index / data.length * width }}"
-                              ng-ya="{{ data[$index - 1].a / max * height }}"
-                              ng-xb="{{ ($index + 1) / data.length * width }}"
-                              ng-yb="{{ line.a / max * height }}"
-                              style="stroke: blue">
-                        </line>
-                        <line ng-repeat="line in data track by $index"
-                              ng-xa="{{ $index / data.length * width }}"
-                              ng-ya="{{ data[$index - 1].b / max * height }}"
-                              ng-xb="{{ ($index + 1) / data.length * width }}"
-                              ng-yb="{{ line.b / max * height }}"
-                              style="stroke: orange">
-                        </line>
-                        <g id="aExpected">
-                            <rect x="0" ng-y="{{ (aExpected / max * height) + 3 }}" ng-width="{{ (1 / data.length) * width }}" height="12" fill="White"/>
-                            <text class="svgText" x="0" ng-y="{{ -(aExpected / max * height) - 4 }}" transform="scale(1,-1)">
-                                {{ aExpected | number:1 }}{{ p }}
-                            </text>
-                        </g>
-                        <g id="bExpected">
-                            <rect x="0" ng-y="{{ (bExpected / max * height) + 3 }}" ng-width="{{ (1 / data.length) * width }}" height="12" fill="White"/>
-                            <text class="svgText" x="0" ng-y="{{ -(bExpected / max * height) - 4 }}" transform="scale(1,-1)">
-                                {{ bExpected | number:1 }}{{ p }}
-                            </text>
-                        </g>
-                        <g id="maxLabel">
-                            <rect x="0" ng-y="{{ height - 12 }}" ng-width="{{ (1 / data.length) * width }}" height="12" fill="White"/>
-                            <text class="svgText" x="0" ng-y="{{ -height + 11 }}" transform="scale(1,-1)">
-                                {{ max | number:1 }}{{ p }}
-                            </text>
-                        </g>
-                    </svg>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="assets/js/include.js"></script>
+        <title>Visualization</title>
+    </head>
+    <!---------------------------------------------------------------------------------------------------->
+    <body ng-app="myApp" ng-controller="VisualizeController">
+        <div></div>
+        <!-- Stylesheets -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" type='text/css' media="all">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" type="text/css" media="all">
+        <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Open+Sans' type='text/css' media="all">
+        <link rel="stylesheet" href="assets/css/mystyles.css" type='text/css' media="all">
+        <!-- Content -->
+        <div class="container-fluid">
+            <div class="row">
+                <nav class="navbar navbar-inverse">
+                    <a class="navbar-brand">Data Visualization</a>
+                </nav>
+                <div class="col-sm-12">
+                    <!--svg line chart-->
+                    <h2>Data Visualization</h2>
+                    <div class="chart" style="width: {{ width }}px; height: {{ height }}px;">
+                        <div class="y" style="width: {{ height }}px;">{{ yAxis }}</div>
+                        <div class="x">{{ xAxis }}</div>
+                        <svg style="width:{{width}}px; height:{{height}}px;">
+                            <line ng-xa="0"
+                                  ng-ya="{{ aExpected / max * height }}"
+                                  ng-xb="{{ width }}"
+                                  ng-yb="{{ aExpected / max * height }}"
+                                  style="stroke: blue">
+                            </line>
+                            <line ng-xa="0"
+                                  ng-ya="{{ bExpected / max * height }}"
+                                  ng-xb="{{ width }}"
+                                  ng-yb="{{ bExpected / max * height }}"
+                                  style="stroke: orange">
+                            </line>
+                            <line ng-repeat="line in data track by $index"
+                                  ng-xa="{{ $index / data.length * width }}"
+                                  ng-ya="{{ data[$index - 1].a / max * height }}"
+                                  ng-xb="{{ ($index + 1) / data.length * width }}"
+                                  ng-yb="{{ line.a / max * height }}"
+                                  style="stroke: blue">
+                            </line>
+                            <line ng-repeat="line in data track by $index"
+                                  ng-xa="{{ $index / data.length * width }}"
+                                  ng-ya="{{ data[$index - 1].b / max * height }}"
+                                  ng-xb="{{ ($index + 1) / data.length * width }}"
+                                  ng-yb="{{ line.b / max * height }}"
+                                  style="stroke: orange">
+                            </line>
+                            <g id="aExpected">
+                                <rect x="0" ng-y="{{ (aExpected / max * height) + 3 }}" ng-width="{{ (1 / data.length) * width }}" height="12" fill="White"/>
+                                <text class="svgText" x="0" ng-y="{{ -(aExpected / max * height) - 4 }}" transform="scale(1,-1)">
+                                    {{ aExpected | number:1 }}{{ p }}
+                                </text>
+                            </g>
+                            <g id="bExpected">
+                                <rect x="0" ng-y="{{ (bExpected / max * height) + 3 }}" ng-width="{{ (1 / data.length) * width }}" height="12" fill="White"/>
+                                <text class="svgText" x="0" ng-y="{{ -(bExpected / max * height) - 4 }}" transform="scale(1,-1)">
+                                    {{ bExpected | number:1 }}{{ p }}
+                                </text>
+                            </g>
+                            <g id="maxLabel">
+                                <rect x="0" ng-y="{{ height - 12 }}" ng-width="{{ (1 / data.length) * width }}" height="12" fill="White"/>
+                                <text class="svgText" x="0" ng-y="{{ -height + 11 }}" transform="scale(1,-1)">
+                                    {{ max | number:1 }}{{ p }}
+                                </text>
+                            </g>
+                        </svg>
+                    </div>
+                    <div class="btn-group" role="group">
+                        <button type="button" ng-click="swapData()" class="btn btn-primary">Swap Data</button>
+                        <button type="button" ng-click="showA()" class="btn btn-primary">Show A</button>
+                        <button type="button" ng-click="showB()" class="btn btn-primary">Show B</button>
+                    </div>
+                    <!--<table class="table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th text-align="center">Week</th>
+                                <th text-align="center">Point A</th>
+                                <th text-align="center">Point B</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="m in data track by $index">
+                                <td>{{ $index + 1 }}</td>
+                                <td>{{ m.a }}</td>
+                                <td>{{ m.b }}</td>
+                            </tr>
+                        </tbody>
+                    </table>-->
                 </div>
-                <div class="btn-group" role="group">
-                    <button type="button" ng-click="swapData()" class="btn btn-primary">Swap Data</button>
-                    <button type="button" ng-click="showA()" class="btn btn-primary">Show A</button>
-                    <button type="button" ng-click="showB()" class="btn btn-primary">Show B</button>
-                </div>
-                <!--<table class="table table-striped table-hover">
-                    <thead>
-                        <tr>
-                            <th text-align="center">Week</th>
-                            <th text-align="center">Point A</th>
-                            <th text-align="center">Point B</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr ng-repeat="m in data track by $index">
-                            <td>{{ $index + 1 }}</td>
-                            <td>{{ m.a }}</td>
-                            <td>{{ m.b }}</td>
-                        </tr>
-                    </tbody>
-                </table>-->
             </div>
-        </div>
-    </div><!-- /container -->
-</body>
-<div ng-if="false">
-    <h1>Loading the application, please hold on...</h1>
-</div>
+        </div><!-- /container -->
+    </body>
+    <div ng-if="false">
+        <h1>Loading the application, please hold on...</h1>
+    </div>
 </html>

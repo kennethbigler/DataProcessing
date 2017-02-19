@@ -1,6 +1,7 @@
 /*global app*/
 app.factory('VisualizeService', ['$window', function ($window) {
     "use strict";
+    // Local Variables
     var factory = {},
         data = [],
         nData = [],
@@ -14,12 +15,16 @@ app.factory('VisualizeService', ['$window', function ($window) {
         bMax = 0,
         gpa = 0;
     
+    // ------------------------------------------------------------
     // get data from the window
+    // ------------------------------------------------------------
     data = $window.data;
     data[-1] = data[0];
     factory.data = data;
     
+    // ------------------------------------------------------------
     // find max to fit results into the graph
+    // ------------------------------------------------------------
     for (i = 0; i < data.length; i += 1) {
         aData[i] = {a: data[i].a, b: 0};
         bData[i] = {a: 0, b: data[i].b};
@@ -40,9 +45,14 @@ app.factory('VisualizeService', ['$window', function ($window) {
     if (factory.bGoal > bMax) {
         bMax = factory.bGoal + 5;
     }
+    // set to the view
     factory.max = max;
     factory.aMax = aMax;
     factory.bMax = bMax;
+    
+    // ------------------------------------------------------------
+    // set goals for the data and clean data
+    // ------------------------------------------------------------
     factory.aGoal = 1200;
     factory.bGoal = 800;
     aData[-1] = aData[0];
@@ -50,7 +60,9 @@ app.factory('VisualizeService', ['$window', function ($window) {
     factory.aData = aData;
     factory.bData = bData;
     
+    // ------------------------------------------------------------
     // find the sums
+    // ------------------------------------------------------------
     for (i = 0; i < data.length; i += 1) {
         aSum += data[i].a;
         bSum += data[i].b;
@@ -60,7 +72,9 @@ app.factory('VisualizeService', ['$window', function ($window) {
     factory.aExpected = aSum / data.length;
     factory.bExpected = bSum / data.length;
     
+    // ------------------------------------------------------------
     // Normalize Data
+    // ------------------------------------------------------------
     // divide value by sum for %
     for (i = 0; i < data.length; i += 1) {
         nData.push({a: 100 * (data[i].a / aSum), b: 100 * (data[i].b / bSum)});

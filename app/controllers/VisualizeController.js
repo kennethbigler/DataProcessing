@@ -8,6 +8,7 @@ app.controller('VisualizeController', ['$scope', 'VisualizeService', '$window', 
     $scope.yAxis = 'Number';
     $scope.xAxis = 'Time';
     
+    // initialize variables for graph
     function init() {
         $scope.p = '%';
         $scope.max = $VS.nMax;
@@ -16,6 +17,7 @@ app.controller('VisualizeController', ['$scope', 'VisualizeService', '$window', 
     }
     init();
     
+    // swap data between regular and normalized data
     $scope.swapData = function () {
         if ($scope.data === $VS.nData) {
             $scope.p = '';
@@ -28,6 +30,7 @@ app.controller('VisualizeController', ['$scope', 'VisualizeService', '$window', 
         }
     };
     
+    // show A data
     $scope.showA = function () {
         $scope.p = '';
         $scope.max = $VS.aMax;
@@ -36,6 +39,7 @@ app.controller('VisualizeController', ['$scope', 'VisualizeService', '$window', 
         $scope.bExpected = $VS.aGoal;
     };
     
+    // show B data
     $scope.showB = function () {
         $scope.p = '';
         $scope.max = $VS.bMax;

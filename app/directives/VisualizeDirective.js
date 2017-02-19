@@ -3,6 +3,7 @@
 // Directive used to remove undefined errors in svg elements
 // ---------------------------------------------------------------------------
 app.directive('ngXa', function () {
+    // line graph x1
     'use strict';
     return function (scope, element, attrs) {
         attrs.$observe('ngXa', function (value) {
@@ -10,6 +11,7 @@ app.directive('ngXa', function () {
         });
     };
 }).directive('ngXb', function () {
+    // line graph x2
     'use strict';
     return function (scope, element, attrs) {
         attrs.$observe('ngXb', function (value) {
@@ -17,6 +19,7 @@ app.directive('ngXa', function () {
         });
     };
 }).directive('ngYa', function () {
+    // line graph y1
     'use strict';
     return function (scope, element, attrs) {
         attrs.$observe('ngYa', function (value) {
@@ -24,6 +27,7 @@ app.directive('ngXa', function () {
         });
     };
 }).directive('ngYb', function () {
+    // line graph y2
     'use strict';
     return function (scope, element, attrs) {
         attrs.$observe('ngYb', function (value) {
@@ -31,6 +35,7 @@ app.directive('ngXa', function () {
         });
     };
 }).directive('ngX', function () {
+    // svg x
     'use strict';
     return function (scope, element, attrs) {
         attrs.$observe('ngX', function (value) {
@@ -38,6 +43,7 @@ app.directive('ngXa', function () {
         });
     };
 }).directive('ngY', function () {
+    // svg y
     'use strict';
     return function (scope, element, attrs) {
         attrs.$observe('ngY', function (value) {
@@ -45,6 +51,7 @@ app.directive('ngXa', function () {
         });
     };
 }).directive('ngWidth', function () {
+    // svg width
     'use strict';
     return function (scope, element, attrs) {
         attrs.$observe('ngWidth', function (value) {
