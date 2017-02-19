@@ -14,18 +14,6 @@ app.factory('VisualizeService', ['$window', function ($window) {
         bMax = 0,
         gpa = 0;
     
-    // get grade data from window
-    data = $window.grades;
-    for (i = 0; i < data.length; i += 1) {
-        gpa += data[i].a;
-        data[i].b = 0;
-    }
-    gpa /= data.length;
-    data[-1] = data[0];
-    factory.gpa = gpa;
-    factory.gMax = 4.01;
-    factory.grades = data;
-    
     // get data from the window
     data = $window.data;
     data[-1] = data[0];
@@ -75,7 +63,7 @@ app.factory('VisualizeService', ['$window', function ($window) {
     // Normalize Data
     // divide value by sum for %
     for (i = 0; i < data.length; i += 1) {
-        nData.push({a: (data[i].a / aSum), b: (data[i].b / bSum)});
+        nData.push({a: 100 * (data[i].a / aSum), b: 100 * (data[i].b / bSum)});
     }
     nData[-1] = nData[0];
     // assign to return value
@@ -98,7 +86,7 @@ app.factory('VisualizeService', ['$window', function ($window) {
     factory.nMax = max;
     
     // expected value
-    factory.expected = 1 / data.length;
+    factory.expected = 100 / data.length;
 
     return factory;
 }]);

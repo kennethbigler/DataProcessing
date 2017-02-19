@@ -9,6 +9,7 @@ app.controller('VisualizeController', ['$scope', 'VisualizeService', '$window', 
     $scope.xAxis = 'Time';
     
     function init() {
+        $scope.p = '%';
         $scope.max = $VS.nMax;
         $scope.data = $VS.nData;
         $scope.aExpected = $scope.bExpected = $scope.aGoal = $scope.bGoal = $VS.expected;
@@ -17,6 +18,7 @@ app.controller('VisualizeController', ['$scope', 'VisualizeService', '$window', 
     
     $scope.swapData = function () {
         if ($scope.data === $VS.nData) {
+            $scope.p = '';
             $scope.max = $VS.max;
             $scope.data = $VS.data;
             $scope.aExpected = $VS.aExpected;
@@ -27,6 +29,7 @@ app.controller('VisualizeController', ['$scope', 'VisualizeService', '$window', 
     };
     
     $scope.showA = function () {
+        $scope.p = '';
         $scope.max = $VS.aMax;
         $scope.data = $VS.aData;
         $scope.aExpected = $VS.aExpected;
@@ -34,16 +37,10 @@ app.controller('VisualizeController', ['$scope', 'VisualizeService', '$window', 
     };
     
     $scope.showB = function () {
+        $scope.p = '';
         $scope.max = $VS.bMax;
         $scope.data = $VS.bData;
         $scope.bExpected = $VS.bExpected;
         $scope.aExpected = $VS.bGoal;
-    };
-    
-    $scope.showGrades = function () {
-        $scope.max = $VS.gMax;
-        $scope.data = $VS.grades;
-        $scope.aExpected = $VS.gpa;
-        $scope.bExpected = 0;
     };
 }]);
